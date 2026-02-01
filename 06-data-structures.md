@@ -184,6 +184,43 @@ if (s1.equals(s2)) { }
 if (s1.equalsIgnoreCase("HELLO")) { }
 ```
 
+## Character Functions
+
+Java provides character functions in the `Character` class. In Python, these are methods on strings. In Java, they're static methods that take a character.
+
+| Task | Python | Java |
+|------|--------|------|
+| **Is letter?** | `c.isalpha()` | `Character.isLetter(c)` |
+| **Is digit?** | `c.isdigit()` | `Character.isDigit(c)` |
+| **Is alphanumeric?** | `c.isalnum()` | `Character.isLetterOrDigit(c)` |
+| **Is whitespace?** | `c.isspace()` | `Character.isWhitespace(c)` |
+| **Is uppercase?** | `c.isupper()` | `Character.isUpperCase(c)` |
+| **Is lowercase?** | `c.islower()` | `Character.isLowerCase(c)` |
+| **To uppercase** | `c.upper()` | `Character.toUpperCase(c)` |
+| **To lowercase** | `c.lower()` | `Character.toLowerCase(c)` |
+
+**Python:**
+```python
+text = "Hello123"
+for c in text:
+    if c.isalpha():
+        print(c.upper())
+    elif c.isdigit():
+        print(c)
+```
+
+**Java:**
+```java
+String text = "Hello123";
+for (char c : text.toCharArray()) {
+    if (Character.isLetter(c)) {
+        System.out.print(Character.toUpperCase(c));
+    } else if (Character.isDigit(c)) {
+        System.out.print(c);
+    }
+}
+```
+
 ---
 
 [← Previous: Functions](05-functions.md) | [Next: I/O Streams →](07-io-streams.md)
