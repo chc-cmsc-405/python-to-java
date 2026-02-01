@@ -14,8 +14,6 @@ This guide maps the Python-to-Java reference materials to the course phases. Rea
 | [02-data-types](02-data-types.md) | All | int, double, String, boolean, type conversion |
 | [03-operators](03-operators.md) | All | Arithmetic, comparison, logical (&&, \|\|, !) |
 
-**Time estimate:** ~20 minutes
-
 **Key takeaways:**
 - Every variable needs a type declaration
 - Use `System.out.println()` instead of `print()`
@@ -35,8 +33,6 @@ This guide maps the Python-to-Java reference materials to the course phases. Rea
 | [04-control-flow](04-control-flow.md) | All | if/else, for loops, enhanced for loop |
 | [05-data-structures](05-data-structures.md) | All | ArrayList, HashMap, Strings, File I/O |
 
-**Time estimate:** ~25 minutes
-
 **Key takeaways:**
 - `ArrayList<Integer>` is like Python's list (but uses wrapper types)
 - Use `add()` instead of `append()`, `size()` instead of `len()`
@@ -55,8 +51,6 @@ This guide maps the Python-to-Java reference materials to the course phases. Rea
 | [06-functions](06-functions.md) | All | Methods, parameters, return types, overloading |
 | [07-oop](07-oop.md) | All | Classes, access modifiers, inheritance, interfaces |
 
-**Time estimate:** ~25 minutes
-
 **Key takeaways:**
 - Constructor has the same name as the class (no `__init__`)
 - Use `this` instead of `self` (and it's optional in most cases)
@@ -74,8 +68,6 @@ This guide maps the Python-to-Java reference materials to the course phases. Rea
 | Read | Sections | Key Concepts |
 |------|----------|--------------|
 | [08-unique-features](08-unique-features.md) | All | Exceptions, packages, static, final |
-
-**Time estimate:** ~20 minutes
 
 **Key takeaways:**
 - Use `try/catch` blocks for exception handling
