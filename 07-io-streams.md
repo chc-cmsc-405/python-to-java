@@ -64,13 +64,21 @@ try (PrintWriter writer = new PrintWriter("output.txt")) {
 
 ## Reading CSV Data
 
+**Sample file (`grades.csv`):**
+```
+Alice,Math,95
+Bob,English,87
+Charlie,Math,92
+```
+
 **Python:**
 ```python
-with open("data.csv", "r") as file:
+with open("grades.csv", "r") as file:
     for line in file:
         parts = line.strip().split(",")
         name = parts[0]
-        score = int(parts[1])
+        subject = parts[1]
+        score = int(parts[2])
 ```
 
 **Java:**
@@ -78,17 +86,20 @@ with open("data.csv", "r") as file:
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-try (BufferedReader reader = new BufferedReader(new FileReader("data.csv"))) {
+try (BufferedReader reader = new BufferedReader(new FileReader("grades.csv"))) {
     String line;
     while ((line = reader.readLine()) != null) {
         String[] parts = line.split(",");
         String name = parts[0];
-        int score = Integer.parseInt(parts[1]);
+        String subject = parts[1];
+        int score = Integer.parseInt(parts[2]);
     }
 } catch (IOException e) {
     e.printStackTrace();
 }
 ```
+
+Java's `split(",")` returns all parts at once, similar to Python.
 
 ## Using Scanner for Files
 

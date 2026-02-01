@@ -165,10 +165,16 @@ greet("Alice", "Hi");    // "Hi, Alice!"
 
 ## Pass by Value vs Reference
 
+In Python, the behavior depends on the type:
+- **Immutable types** (`int`, `str`, `tuple`): Changes inside a function don't affect the original—similar to pass by value
+- **Mutable types** (`list`, `dict`): Changes inside a function affect the original—similar to pass by reference
+
 Java is **always pass-by-value**, but this can be confusing:
 
-- **Primitives:** The value is copied. Changes don't affect the original.
-- **Objects:** The reference is copied. The method can modify the object's contents.
+- **Primitives** (`int`, `double`, etc.): The value is copied. Changes don't affect the original.
+- **Objects** (`ArrayList`, `String`, etc.): The reference is copied. The method can modify the object's contents, but can't reassign what the caller's variable points to.
+
+This is similar to Python's behavior with mutable types.
 
 ```java
 public static void modifyPrimitive(int x) {
@@ -189,6 +195,21 @@ public static void main(String[] args) {
     System.out.println(numbers.size());  // 1 (list was modified)
 }
 ```
+
+## The final Keyword
+
+Java's `final` prevents reassignment, but it does NOT prevent modification of an object's contents:
+
+```java
+final int x = 10;
+x = 20;  // Error! Can't reassign final variable
+
+final ArrayList<Integer> list = new ArrayList<>();
+list.add(1);           // OK - can still modify the list!
+list = new ArrayList<>();  // Error - can't reassign to new list
+```
+
+**Note:** Unlike C++'s `const`, Java has no way to mark a parameter as "read-only" to prevent a method from modifying an object's contents. If you pass an `ArrayList` to a method, that method can always call `.add()` or `.remove()` on it.
 
 ---
 
