@@ -134,36 +134,54 @@ for (String name : scores.keySet()) {
 
 ## Strings
 
+### String Basics
+
 | Concept | Python | Java |
 |---------|--------|------|
 | **Create** | `s = "hello"` | `String s = "hello";` |
 | **Length** | `len(s)` | `s.length()` |
 | **Concatenate** | `s1 + s2` | `s1 + s2` |
-| **Find** | `s.find("ell")` | `s.indexOf("ell")` |
-| **Substring** | `s[1:4]` | `s.substring(1, 4)` (start, end) |
 | **Access char** | `s[0]` | `s.charAt(0)` |
+| **Check empty** | `if not s:` | `if (s.isEmpty())` |
 | **Uppercase** | `s.upper()` | `s.toUpperCase()` |
 | **Lowercase** | `s.lower()` | `s.toLowerCase()` |
 | **Strip whitespace** | `s.strip()` | `s.trim()` |
 | **Split** | `s.split(",")` | `s.split(",")` |
+
+### String Operations (Finding & Extracting)
+
+| Concept | Python | Java |
+|---------|--------|------|
+| **Find** | `s.find("ell")` | `s.indexOf("ell")` |
+| **Find from end** | `s.rfind("l")` | `s.lastIndexOf("l")` |
+| **Substring** | `s[1:4]` | `s.substring(1, 4)` (start, end) |
 | **Contains** | `"ell" in s` | `s.contains("ell")` |
+| **Starts with** | `s.startswith("He")` | `s.startsWith("He")` |
+| **Ends with** | `s.endswith("!")` | `s.endsWith("!")` |
 
-**Python:**
-```python
-text = "Hello, World!"
-print(len(text))          # 13
-print(text[0:5])          # Hello
-print(text.find("World")) # 7
-print(text.upper())       # HELLO, WORLD!
-```
-
-**Java:**
 ```java
 String text = "Hello, World!";
-System.out.println(text.length());           // 13
-System.out.println(text.substring(0, 5));    // Hello
-System.out.println(text.indexOf("World"));   // 7
-System.out.println(text.toUpperCase());      // HELLO, WORLD!
+System.out.println(text.indexOf("o"));        // 4
+System.out.println(text.lastIndexOf("o"));    // 8
+System.out.println(text.substring(0, 5));     // Hello
+System.out.println(text.startsWith("Hello")); // true
+```
+
+### String Modifiers
+
+Java strings are **immutable**—methods return new strings, they don't modify the original.
+
+| Concept | Python | Java |
+|---------|--------|------|
+| **Replace all** | `s.replace("o", "0")` | `s.replace("o", "0")` |
+| **Replace first** | N/A | `s.replaceFirst("o", "0")` |
+| **Join** | `",".join(list)` | `String.join(",", list)` |
+
+```java
+String text = "Hello, World!";
+System.out.println(text.replace("o", "0"));      // Hell0, W0rld!
+System.out.println(text.replaceFirst("o", "0")); // Hell0, World!
+// Original 'text' is unchanged
 ```
 
 ### String Comparison
