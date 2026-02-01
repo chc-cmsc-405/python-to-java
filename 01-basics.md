@@ -43,7 +43,7 @@ public class HelloWorld {
 - `public static void main(String[] args)` is the exact signature required
 - `System.out.println()` adds a newline; `System.out.print()` does not
 
-## Output
+## Console Output
 
 | Python | Java |
 |--------|------|
@@ -58,9 +58,9 @@ System.out.printf("Name: %s, Age: %d%n", name, age);
 System.out.printf("Price: %.2f%n", price);  // 2 decimal places
 ```
 
-## Input
+## Console Input
 
-Java requires creating a `Scanner` object to read input:
+Java requires creating a `Scanner` object to read console input:
 
 **Python:**
 ```python

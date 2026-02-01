@@ -1,4 +1,4 @@
-# 08 - Java Unique Features
+# 09 - Java Unique Features
 
 [← Back to Java Guide](README.md)
 
@@ -247,4 +247,4 @@ public static void main(String[] args) {
 
 ---
 
-[← Previous: OOP](07-oop.md) | [Back to Java Guide](README.md)
+[← Previous: Custom Types](08-custom-types.md) | [Back to Java Guide](README.md)

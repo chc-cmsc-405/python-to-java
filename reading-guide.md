@@ -31,7 +31,9 @@ This guide maps the Python-to-Java reference materials to the course phases. Rea
 | Read | Sections | Key Concepts |
 |------|----------|--------------|
 | [04-control-flow](04-control-flow.md) | All | if/else, for loops, enhanced for loop |
-| [05-data-structures](05-data-structures.md) | All | ArrayList, HashMap, Strings, File I/O |
+| [05-functions](05-functions.md) | All | Methods, parameters, return types, overloading |
+| [06-data-structures](06-data-structures.md) | All | ArrayList, HashMap, Strings |
+| [07-io-streams](07-io-streams.md) | All | File I/O, BufferedReader, PrintWriter |
 
 **Key takeaways:**
 - `ArrayList<Integer>` is like Python's list (but uses wrapper types)
@@ -42,14 +44,13 @@ This guide maps the Python-to-Java reference materials to the course phases. Rea
 
 ---
 
-## Phase 3: OOP (Session 5-7)
+## Phase 3: Custom Types (Session 5-7)
 
 **Topics:** Classes, constructors, inheritance, interfaces
 
 | Read | Sections | Key Concepts |
 |------|----------|--------------|
-| [06-functions](06-functions.md) | All | Methods, parameters, return types, overloading |
-| [07-oop](07-oop.md) | All | Classes, access modifiers, inheritance, interfaces |
+| [08-custom-types](08-custom-types.md) | All | Classes, access modifiers, inheritance, interfaces |
 
 **Key takeaways:**
 - Constructor has the same name as the class (no `__init__`)
@@ -67,7 +68,7 @@ This guide maps the Python-to-Java reference materials to the course phases. Rea
 
 | Read | Sections | Key Concepts |
 |------|----------|--------------|
-| [08-unique-features](08-unique-features.md) | All | Exceptions, packages, static, final |
+| [09-unique-features](09-unique-features.md) | All | Exceptions, packages, static, final |
 
 **Key takeaways:**
 - Use `try/catch` blocks for exception handling
@@ -83,9 +84,9 @@ This guide maps the Python-to-Java reference materials to the course phases. Rea
 | Phase | Session | Read Before Class |
 |-------|---------|-------------------|
 | 1 | S1 (Mon) | 01-basics, 02-data-types, 03-operators |
-| 2 | S3 (Mon) | 04-control-flow, 05-data-structures |
-| 3 | S5 (Mon) | 06-functions, 07-oop |
-| 4 | S8 (Wed) | 08-unique-features |
+| 2 | S3 (Mon) | 04-control-flow, 05-functions, 06-data-structures, 07-io-streams |
+| 3 | S5 (Mon) | 08-custom-types |
+| 4 | S8 (Wed) | 09-unique-features |
 
 ---
 
@@ -95,11 +96,12 @@ For complete coverage or later review, all sections are available:
 
 | Guide | Topics |
 |-------|--------|
-| [01-basics](01-basics.md) | Hello World, I/O, variables, constants |
+| [01-basics](01-basics.md) | Hello World, console I/O, variables, constants |
 | [02-data-types](02-data-types.md) | Types, wrapper classes, type conversion |
 | [03-operators](03-operators.md) | Arithmetic, comparison, logical |
 | [04-control-flow](04-control-flow.md) | If/else, for, while, switch |
-| [05-data-structures](05-data-structures.md) | ArrayList, HashMap, Strings, File I/O |
-| [06-functions](06-functions.md) | Methods, parameters, overloading |
-| [07-oop](07-oop.md) | Classes, inheritance, interfaces |
-| [08-unique-features](08-unique-features.md) | Exceptions, packages, static, final |
+| [05-functions](05-functions.md) | Methods, parameters, overloading |
+| [06-data-structures](06-data-structures.md) | ArrayList, HashMap, Strings |
+| [07-io-streams](07-io-streams.md) | File I/O, BufferedReader, PrintWriter |
+| [08-custom-types](08-custom-types.md) | Classes, inheritance, interfaces |
+| [09-unique-features](09-unique-features.md) | Exceptions, packages, static, final |

@@ -147,14 +147,15 @@ For more examples and in-depth explanations, see:
 
 | Section | Topics |
 |---------|--------|
-| [01 - Basics](01-basics.md) | Comments, Hello World, I/O, variables, constants |
+| [01 - Basics](01-basics.md) | Comments, Hello World, console I/O, variables, constants |
 | [02 - Data Types](02-data-types.md) | Primitives, wrapper classes, type conversion |
 | [03 - Operators](03-operators.md) | Arithmetic, comparison, logical |
 | [04 - Control Flow](04-control-flow.md) | If/else, for, while, switch |
-| [05 - Data Structures](05-data-structures.md) | Arrays, ArrayList, HashMap, Strings, File I/O |
-| [06 - Functions](06-functions.md) | Methods, parameters, return types, overloading |
-| [07 - OOP](07-oop.md) | Classes, constructors, inheritance, interfaces |
-| [08 - Unique Features](08-unique-features.md) | JVM, packages, exceptions, access modifiers |
+| [05 - Functions](05-functions.md) | Methods, parameters, return types, overloading |
+| [06 - Data Structures](06-data-structures.md) | Arrays, ArrayList, HashMap, Strings |
+| [07 - I/O Streams](07-io-streams.md) | File I/O, BufferedReader, PrintWriter, CSV parsing |
+| [08 - Custom Types](08-custom-types.md) | Classes, constructors, inheritance, interfaces |
+| [09 - Unique Features](09-unique-features.md) | JVM, packages, exceptions, access modifiers |
 
 ---
 

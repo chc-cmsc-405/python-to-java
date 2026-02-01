@@ -1,4 +1,4 @@
-# 06 - Functions (Methods)
+# 05 - Functions (Methods)
 
 [← Back to Java Guide](README.md)
 
@@ -192,4 +192,4 @@ public static void main(String[] args) {
 
 ---
 
-[← Previous: Data Structures](05-data-structures.md) | [Next: OOP →](07-oop.md)
+[← Previous: Control Flow](04-control-flow.md) | [Next: Data Structures →](06-data-structures.md)

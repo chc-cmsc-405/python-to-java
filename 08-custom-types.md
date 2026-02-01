@@ -1,4 +1,4 @@
-# 07 - Object-Oriented Programming
+# 08 - Custom Types
 
 [← Back to Java Guide](README.md)
 
@@ -258,4 +258,4 @@ public class Counter {
 
 ---
 
-[← Previous: Functions](06-functions.md) | [Next: Unique Features →](08-unique-features.md)
+[← Previous: I/O Streams](07-io-streams.md) | [Next: Unique Features →](09-unique-features.md)
