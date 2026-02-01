@@ -31,24 +31,9 @@ Java has 8 primitive types. These are the most common:
 | `boolean` | 1 bit | true/false | false |
 | `char` | 16 bits | Unicode character | '\u0000' |
 
-## Reference Types
+---
 
-Everything else in Java is a reference type: `String`, arrays, collections, custom classes.
-
-**Python:**
-```python
-name = "Alice"     # String
-numbers = [1,2,3]  # List (reference type)
-```
-
-**Java:**
-```java
-String name = "Alice";           // Reference type
-int[] numbers = {1, 2, 3};       // Array (reference type)
-ArrayList<Integer> list = new ArrayList<>();  // Collection
-```
-
-## Wrapper Classes (Primitives vs Objects)
+## Wrapper Classes
 
 Java provides wrapper classes that turn primitives into objects. This matters for collections, which can only hold objects.
 
@@ -72,41 +57,130 @@ Integer num = 42;           // int → Integer (autoboxing)
 int x = num;                // Integer → int (unboxing)
 ```
 
+**Wrapper class methods:**
+
+| Task | Code |
+|------|------|
+| Parse string to int | `Integer.parseInt("42")` |
+| Parse string to double | `Double.parseDouble("3.14")` |
+| Int to string | `Integer.toString(42)` |
+| Max int value | `Integer.MAX_VALUE` |
+| Compare | `Integer.compare(a, b)` |
+
+---
+
 ## Strings
 
-Strings in Java are objects, not primitives. They are immutable (cannot be changed after creation).
+Strings in Java are objects, not primitives. They are **immutable**—methods return new strings, they don't modify the original.
+
+### String Basics
+
+| Concept | Python | Java |
+|---------|--------|------|
+| **Create** | `s = "hello"` | `String s = "hello";` |
+| **Length** | `len(s)` | `s.length()` |
+| **Concatenate** | `s1 + s2` | `s1 + s2` |
+| **Access char** | `s[0]` | `s.charAt(0)` |
+| **Check empty** | `if not s:` | `if (s.isEmpty())` |
+| **Uppercase** | `s.upper()` | `s.toUpperCase()` |
+| **Lowercase** | `s.lower()` | `s.toLowerCase()` |
+| **Strip whitespace** | `s.strip()` | `s.trim()` |
+| **Split** | `s.split(",")` | `s.split(",")` |
+
+### String Operations (Finding & Extracting)
+
+| Concept | Python | Java |
+|---------|--------|------|
+| **Find** | `s.find("ell")` | `s.indexOf("ell")` |
+| **Find from end** | `s.rfind("l")` | `s.lastIndexOf("l")` |
+| **Substring** | `s[1:4]` | `s.substring(1, 4)` (start, end) |
+| **Contains** | `"ell" in s` | `s.contains("ell")` |
+| **Starts with** | `s.startswith("He")` | `s.startsWith("He")` |
+| **Ends with** | `s.endswith("!")` | `s.endsWith("!")` |
+
+```java
+String text = "Hello, World!";
+System.out.println(text.indexOf("o"));        // 4
+System.out.println(text.lastIndexOf("o"));    // 8
+System.out.println(text.substring(0, 5));     // Hello
+System.out.println(text.startsWith("Hello")); // true
+```
+
+### String Modifiers
+
+| Concept | Python | Java |
+|---------|--------|------|
+| **Replace all** | `s.replace("o", "0")` | `s.replace("o", "0")` |
+| **Replace first** | N/A | `s.replaceFirst("o", "0")` |
+| **Join** | `",".join(list)` | `String.join(",", list)` |
+
+```java
+String text = "Hello, World!";
+System.out.println(text.replace("o", "0"));      // Hell0, W0rld!
+System.out.println(text.replaceFirst("o", "0")); // Hell0, World!
+// Original 'text' is unchanged
+```
+
+### String Comparison
+
+**Important:** Always use `.equals()` for String comparison:
+
+```java
+String s1 = "hello";
+String s2 = "hello";
+
+// WRONG (compares references)
+if (s1 == s2) { }
+
+// CORRECT (compares content)
+if (s1.equals(s2)) { }
+
+// Case-insensitive comparison
+if (s1.equalsIgnoreCase("HELLO")) { }
+```
+
+---
+
+## Character Functions
+
+Java provides character functions in the `Character` class. In Python, these are methods on strings. In Java, they're static methods that take a character.
+
+| Task | Python | Java |
+|------|--------|------|
+| **Is letter?** | `c.isalpha()` | `Character.isLetter(c)` |
+| **Is digit?** | `c.isdigit()` | `Character.isDigit(c)` |
+| **Is alphanumeric?** | `c.isalnum()` | `Character.isLetterOrDigit(c)` |
+| **Is whitespace?** | `c.isspace()` | `Character.isWhitespace(c)` |
+| **Is uppercase?** | `c.isupper()` | `Character.isUpperCase(c)` |
+| **Is lowercase?** | `c.islower()` | `Character.isLowerCase(c)` |
+| **To uppercase** | `c.upper()` | `Character.toUpperCase(c)` |
+| **To lowercase** | `c.lower()` | `Character.toLowerCase(c)` |
 
 **Python:**
 ```python
-s = "Hello"
-s = 'Hello'      # Same thing
+text = "Hello123"
+for c in text:
+    if c.isalpha():
+        print(c.upper())
+    elif c.isdigit():
+        print(c)
 ```
 
 **Java:**
 ```java
-String s = "Hello";    // String literal (preferred)
-String s = new String("Hello");  // Object creation (rarely needed)
+String text = "Hello123";
+for (char c : text.toCharArray()) {
+    if (Character.isLetter(c)) {
+        System.out.print(Character.toUpperCase(c));
+    } else if (Character.isDigit(c)) {
+        System.out.print(c);
+    }
+}
 ```
 
-## Null
+---
 
-Java uses `null` instead of Python's `None`:
-
-| Python | Java |
-|--------|------|
-| `x = None` | `String x = null;` |
-| `if x is None:` | `if (x == null)` |
-| `if x is not None:` | `if (x != null)` |
-
-**Important:** Only reference types can be null. Primitives cannot be null.
-
-```java
-String name = null;    // OK - reference type
-int x = null;          // ERROR - primitive cannot be null
-Integer y = null;      // OK - wrapper class is a reference type
-```
-
-## Type Conversion
+## Type Conversions
 
 | Python | Java |
 |--------|------|
@@ -130,6 +204,26 @@ int num = Integer.parseInt(numStr);        // String to int
 double pi = Double.parseDouble("3.14");    // String to double
 String text = String.valueOf(100);         // Int to string
 String text2 = "" + 100;                   // Shortcut: concat with empty string
+```
+
+---
+
+## Null
+
+Java uses `null` instead of Python's `None`:
+
+| Python | Java |
+|--------|------|
+| `x = None` | `String x = null;` |
+| `if x is None:` | `if (x == null)` |
+| `if x is not None:` | `if (x != null)` |
+
+**Important:** Only reference types can be null. Primitives cannot be null.
+
+```java
+String name = null;    // OK - reference type
+int x = null;          // ERROR - primitive cannot be null
+Integer y = null;      // OK - wrapper class is a reference type
 ```
 
 ---
