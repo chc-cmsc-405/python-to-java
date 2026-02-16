@@ -4,6 +4,19 @@
 
 Java is a strictly object-oriented language—everything must be inside a class. Unlike Python where OOP is optional, Java enforces it from the start. Classes have explicit access modifiers (`public`, `private`, `protected`) that the compiler enforces. Constructors have the same name as the class instead of `__init__`, and there's no `self` parameter—the `this` keyword is used to refer to the current object.
 
+## Contents
+
+- [Class Definition](#class-definition)
+- [Creating Objects](#creating-objects)
+- [Key OOP Differences](#key-oop-differences)
+- [Access Modifiers](#access-modifiers)
+- [Getters and Setters](#getters-and-setters)
+- [Inheritance](#inheritance)
+- [Interfaces](#interfaces)
+- [Destructors: Not Needed](#destructors-not-needed)
+- [Static Members](#static-members)
+- [Using this](#using-this)
+
 ---
 
 ## Class Definition
@@ -225,6 +238,37 @@ public class Duck implements Flyable, Swimmable {
         System.out.println("Swimming");
     }
 }
+```
+
+## Destructors: Not Needed
+
+C++ requires destructors to free memory manually. Java doesn't — the garbage collector handles all cleanup automatically. There is no `~ClassName()` equivalent.
+
+If your class holds resources like file handles or database connections, use **try-with-resources** (see [09 - Unique Features](09-unique-features.md)) to ensure they're closed properly.
+
+## Static Members
+
+The `static` keyword creates class-level variables and methods (shared across all instances):
+
+```java
+public class Counter {
+    private static int totalCount = 0;  // Shared across all instances
+    private int instanceCount = 0;       // Unique to each instance
+
+    public Counter() {
+        totalCount++;
+        instanceCount++;
+    }
+
+    public static int getTotalCount() {  // Can call without object
+        return totalCount;
+    }
+}
+
+// Usage
+Counter c1 = new Counter();
+Counter c2 = new Counter();
+System.out.println(Counter.getTotalCount());  // 2 (called on class)
 ```
 
 ## Using `this`

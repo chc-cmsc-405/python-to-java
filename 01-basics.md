@@ -135,6 +135,80 @@ public class Constants {
 }
 ```
 
+## The main Method Explained
+
+Every Java program needs this exact signature:
+
+```java
+public static void main(String[] args) {
+    // Program starts here
+}
+```
+
+| Part | Meaning |
+|------|---------|
+| `public` | Accessible from anywhere (JVM needs to call it) |
+| `static` | Belongs to class, not instance (no object needed to start) |
+| `void` | Returns nothing |
+| `main` | Exact name JVM looks for |
+| `String[] args` | Command-line arguments |
+
+**Accessing command-line arguments:**
+```java
+public static void main(String[] args) {
+    if (args.length > 0) {
+        System.out.println("First argument: " + args[0]);
+    }
+}
+```
+
+## Packages and Imports
+
+Java uses packages to organize classes and avoid naming conflicts:
+
+**Package declaration (at top of file):**
+```java
+package com.example.myapp;
+
+public class MyClass {
+    // ...
+}
+```
+
+**Importing classes:**
+```java
+import java.util.ArrayList;       // Import specific class
+import java.util.HashMap;
+import java.util.*;               // Import all classes from package (not recommended)
+```
+
+| Python | Java |
+|--------|------|
+| `from math import sqrt` | `import java.lang.Math;` (Math auto-imported) |
+| `import os` | `import java.io.*;` |
+| `from collections import defaultdict` | `import java.util.HashMap;` |
+
+## Compilation
+
+Unlike Python's immediate execution, Java compiles to **bytecode** that runs on the JVM:
+
+```
+Java Source (.java) → Compiler → Bytecode (.class) → JVM → Execution
+```
+
+```bash
+# Compile source to bytecode
+javac HelloWorld.java
+
+# Run the bytecode on JVM
+java HelloWorld
+```
+
+**Benefits of the JVM:**
+- **Portability:** Same bytecode runs on any platform with a JVM
+- **Memory management:** Automatic garbage collection
+- **Security:** JVM provides a sandbox environment
+
 ---
 
 [Next: Data Types →](02-data-types.md)

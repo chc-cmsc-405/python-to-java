@@ -4,6 +4,15 @@
 
 Java is statically typed—every variable must have a declared type, and that type cannot change. Java distinguishes between **primitive types** (basic values like `int`, `double`, `boolean`) and **reference types** (objects like `String`, arrays, custom classes). Primitives are stored directly in memory, while reference types store a reference to an object on the heap.
 
+## Contents
+
+- [Primitive Types](#primitive-types)
+- [Wrapper Classes](#wrapper-classes)
+- [Strings](#strings)
+- [Character Functions](#character-functions)
+- [Type Conversions](#type-conversions)
+- [Null](#null)
+
 ---
 
 ## Primitive Types

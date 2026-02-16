@@ -4,6 +4,18 @@
 
 In Java, all functions are called **methods** and must live inside a class. They require explicit return types and parameter types. Use `void` if no return value. The `static` keyword means the method belongs to the class itself rather than an instance—you can call it without creating an object. Non-static methods (instance methods) require an object to call them on.
 
+## Contents
+
+- [Basic Method](#basic-method)
+- [Method with Multiple Parameters](#method-with-multiple-parameters)
+- [Default Parameters](#default-parameters)
+- [Void Methods](#void-methods-no-return-value)
+- [Static vs Instance Methods](#static-vs-instance-methods)
+- [Method Overloading](#method-overloading)
+- [Return Types](#return-types)
+- [Pass by Value vs Reference](#pass-by-value-vs-reference)
+- [The final Keyword](#the-final-keyword)
+
 ---
 
 ## Basic Method
