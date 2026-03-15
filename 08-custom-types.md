@@ -188,7 +188,7 @@ The naming convention is `getFieldName()` and `setFieldName()`. Not every field 
 
 When multiple classes share common fields and behavior, you can pull the shared parts into a **base class** and have other classes **extend** it. The subclass inherits all the fields and methods of the parent, then adds its own.
 
-**Why use inheritance?** Without it, you'd copy the same fields and methods into every class. If you need to add a field like `hireDate` to all of them, you'd have to change every class. With inheritance, you change the base class once.
+**Why use inheritance?** Without it, you'd copy the same fields and methods into every class. With inheritance, shared fields and behavior live in one place — the base class.
 
 **Python:**
 ```python
