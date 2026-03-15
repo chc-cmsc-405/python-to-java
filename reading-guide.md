@@ -46,36 +46,39 @@ This guide maps the Python-to-Java reference materials to each phase. Read the a
 
 ## Phase 3: Custom Types
 
-**Topics:** Classes, constructors, inheritance, interfaces
+**Topics:** Classes, constructors, encapsulation, inheritance, polymorphism
 
 | Read | Sections | Key Concepts |
 |------|----------|--------------|
-| [08-custom-types](08-custom-types.md) | All | Classes, access modifiers, inheritance, interfaces |
+| [08-custom-types](08-custom-types.md) | All | Classes, `this`, access modifiers, getters/setters, inheritance, polymorphism |
 
 **Key takeaways:**
 - Constructor has the same name as the class (no `__init__`)
-- Use `this` instead of `self` (and it's optional in most cases)
+- Use `this` instead of `self` (and it's only needed to disambiguate)
 - Access modifiers (`public`, `private`) are enforced by compiler
 - Java uses `extends` for inheritance (single inheritance only)
-- Use `implements` for interfaces (Java's answer to multiple inheritance)
+- `super()` calls the parent constructor — must be first line
 - Always use `@Override` annotation when overriding methods
+- Polymorphism: `ArrayList<Animal>` can hold any subclass
 
 ---
 
 ## Phase 4: Unique Features
 
-**Topics:** Exception handling, packages, static members
+**Topics:** Interfaces, abstract classes, exceptions, static, final
 
 | Read | Sections | Key Concepts |
 |------|----------|--------------|
-| [09-unique-features](09-unique-features.md) | All | Exceptions, packages, static, final |
+| [09-unique-features](09-unique-features.md) | All | Interfaces, abstract classes, exceptions, static, final |
 
 **Key takeaways:**
+- `interface` defines a contract — `implements` fulfills it
+- A class can implement multiple interfaces but extend only one class
+- Abstract classes mix implemented and abstract methods
 - Use `try/catch` blocks for exception handling
-- `throws` declares exceptions a method might throw
+- Checked exceptions must be caught or declared with `throws`
 - `static` members belong to the class, not instances
 - `final` means constant (like Python's convention for `CONSTANTS`)
-- Package structure mirrors directory structure
 
 ---
 
@@ -103,5 +106,5 @@ For complete coverage or later review, all sections are available:
 | [05-functions](05-functions.md) | Methods, parameters, overloading |
 | [06-data-structures](06-data-structures.md) | ArrayList, HashMap, Strings |
 | [07-io-streams](07-io-streams.md) | File I/O, BufferedReader, PrintWriter |
-| [08-custom-types](08-custom-types.md) | Classes, inheritance, interfaces |
-| [09-unique-features](09-unique-features.md) | Exceptions, packages, static, final |
+| [08-custom-types](08-custom-types.md) | Classes, `this`, encapsulation, inheritance, polymorphism |
+| [09-unique-features](09-unique-features.md) | Interfaces, abstract classes, exceptions, static, final |

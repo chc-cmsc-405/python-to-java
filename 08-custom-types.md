@@ -7,15 +7,13 @@ Java is a strictly object-oriented language—everything must be inside a class.
 ## Contents
 
 - [Class Definition](#class-definition)
+- [The this Keyword](#the-this-keyword)
 - [Creating Objects](#creating-objects)
 - [Key OOP Differences](#key-oop-differences)
 - [Access Modifiers](#access-modifiers)
 - [Getters and Setters](#getters-and-setters)
 - [Inheritance](#inheritance)
-- [Interfaces](#interfaces)
 - [Destructors: Not Needed](#destructors-not-needed)
-- [Static Members](#static-members)
-- [Using this](#using-this)
 
 ---
 
@@ -57,6 +55,34 @@ public class Dog {
 }
 ```
 
+Notice the pattern: fields are declared at the top of the class with access modifiers, the constructor initializes them, and methods provide access. Every field, constructor, and method has an explicit access level (`public` or `private`).
+
+## The `this` Keyword
+
+In Python, every method receives `self` as its first parameter — it's how you refer to the current object. Java uses `this` instead, but it works differently: `this` is implicit (not a parameter) and is only required when you need to disambiguate.
+
+The most common use is in constructors where parameter names match field names:
+
+```java
+public class Dog {
+    private String name;
+
+    public Dog(String name) {
+        this.name = name;  // this.name = the field, name = the parameter
+    }
+}
+```
+
+Without `this`, the compiler would think both `name` references mean the parameter. `this.name` says "the field belonging to this object."
+
+In methods where there's no ambiguity, `this` is optional:
+
+```java
+public void bark() {
+    System.out.println(name + " says woof!");  // no this needed
+}
+```
+
 ## Creating Objects
 
 **Python:**
@@ -73,7 +99,7 @@ myDog.bark();
 System.out.println(myDog.getAge());
 ```
 
-**Note:** Java requires the `new` keyword to create objects.
+**Note:** Java requires the `new` keyword to create objects. The variable declaration includes the type (`Dog myDog`), and `new Dog(...)` calls the constructor and returns a reference to the new object.
 
 ## Key OOP Differences
 
@@ -116,6 +142,8 @@ public class Person {
 | (none) | Yes | Yes | No | No |
 | `private` | Yes | No | No | No |
 
+The standard pattern is: fields are `private`, access goes through `public` getter/setter methods. This is called **encapsulation** — the class controls how its data is accessed and modified.
+
 ## Getters and Setters
 
 Java conventionally uses getter/setter methods for private fields:
@@ -154,7 +182,13 @@ public class Person {
 }
 ```
 
+The naming convention is `getFieldName()` and `setFieldName()`. Not every field needs a setter — if a field shouldn't change after construction, only provide a getter. This gives you control over what can be modified from outside the class.
+
 ## Inheritance
+
+When multiple classes share common fields and behavior, you can pull the shared parts into a **base class** and have other classes **extend** it. The subclass inherits all the fields and methods of the parent, then adds its own.
+
+**Why use inheritance?** Without it, you'd copy the same fields and methods into every class. If you need to add a field like `hireDate` to all of them, you'd have to change every class. With inheritance, you change the base class once.
 
 **Python:**
 ```python
@@ -173,14 +207,18 @@ class Dog(Animal):
 **Java:**
 ```java
 public class Animal {
-    protected String name;
+    private String name;
 
     public Animal(String name) {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void speak() {
-        // Base implementation (or make abstract)
+        // Base implementation
     }
 }
 
@@ -191,114 +229,37 @@ public class Dog extends Animal {
 
     @Override
     public void speak() {
-        System.out.println(name + " says woof!");
+        System.out.println(getName() + " says woof!");
     }
 }
 ```
 
-## Interfaces
+Key concepts:
 
-Java uses interfaces instead of multiple inheritance:
+- **`extends`** — declares that Dog is a subclass of Animal. Dog inherits all of Animal's fields and methods.
+- **`super(name)`** — calls the parent's constructor. This must be the first line in the subclass constructor. The parent is responsible for initializing its own fields.
+- **`@Override`** — tells the compiler this method is overriding a parent method. If you misspell the method name, the compiler will catch it. Optional but strongly recommended.
+- **Private fields and getters** — Animal's `name` field is `private`, so Dog can't access it directly. Dog uses `getName()` instead. This is encapsulation in action across an inheritance hierarchy.
 
-**Python:**
-```python
-class Flyable:
-    def fly(self):
-        pass
+With inheritance, you can also store different subclasses in a collection of the parent type:
 
-class Swimmable:
-    def swim(self):
-        pass
-
-class Duck(Flyable, Swimmable):  # Multiple inheritance
-    def fly(self):
-        print("Flying")
-    def swim(self):
-        print("Swimming")
-```
-
-**Java:**
 ```java
-interface Flyable {
-    void fly();
-}
+ArrayList<Animal> animals = new ArrayList<>();
+animals.add(new Dog("Buddy"));
+animals.add(new Cat("Whiskers"));
 
-interface Swimmable {
-    void swim();
-}
-
-public class Duck implements Flyable, Swimmable {
-    @Override
-    public void fly() {
-        System.out.println("Flying");
-    }
-
-    @Override
-    public void swim() {
-        System.out.println("Swimming");
-    }
+for (Animal a : animals) {
+    a.speak();  // Calls the right version for each type
 }
 ```
+
+This is **polymorphism** — one variable type (`Animal`), multiple behaviors depending on the actual object. Each subclass's `speak()` runs when called, even though the variable is declared as `Animal`.
 
 ## Destructors: Not Needed
 
 C++ requires destructors to free memory manually. Java doesn't — the garbage collector handles all cleanup automatically. There is no `~ClassName()` equivalent.
 
 If your class holds resources like file handles or database connections, use **try-with-resources** (see [09 - Unique Features](09-unique-features.md)) to ensure they're closed properly.
-
-## Static Members
-
-The `static` keyword creates class-level variables and methods (shared across all instances):
-
-```java
-public class Counter {
-    private static int totalCount = 0;  // Shared across all instances
-    private int instanceCount = 0;       // Unique to each instance
-
-    public Counter() {
-        totalCount++;
-        instanceCount++;
-    }
-
-    public static int getTotalCount() {  // Can call without object
-        return totalCount;
-    }
-}
-
-// Usage
-Counter c1 = new Counter();
-Counter c2 = new Counter();
-System.out.println(Counter.getTotalCount());  // 2 (called on class)
-```
-
-## Using `this`
-
-**Python:**
-```python
-class Counter:
-    def __init__(self):
-        self.count = 0
-
-    def increment(self):
-        self.count += 1
-        return self  # Method chaining
-```
-
-**Java:**
-```java
-public class Counter {
-    private int count;
-
-    public Counter() {
-        this.count = 0;
-    }
-
-    public Counter increment() {
-        this.count++;
-        return this;  // Method chaining
-    }
-}
-```
 
 ---
 
