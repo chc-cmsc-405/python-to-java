@@ -118,20 +118,20 @@ Python uses naming conventions. Java enforces access:
 
 **Python:**
 ```python
-class Person:
+class Dog:
     def __init__(self, name):
         self.name = name       # Public (convention)
         self._age = 0          # "Private" (convention only)
-        self.__secret = "x"    # Name-mangled
+        self.__weight = 0.0    # Name-mangled
 ```
 
 **Java:**
 ```java
-public class Person {
+public class Dog {
     public String name;        // Accessible from anywhere
     private int age;           // Only accessible within class
-    protected String secret;   // Accessible in class and subclasses
-    String status;             // Package-private (no modifier)
+    protected double weight;   // Accessible in class and subclasses
+    String breed;              // Package-private (no modifier)
 }
 ```
 
@@ -150,9 +150,10 @@ Java conventionally uses getter/setter methods for private fields:
 
 **Python:**
 ```python
-class Person:
-    def __init__(self, name):
+class Dog:
+    def __init__(self, name, age):
         self._name = name
+        self._age = age
 
     @property
     def name(self):
@@ -165,15 +166,21 @@ class Person:
 
 **Java:**
 ```java
-public class Person {
+public class Dog {
     private String name;
+    private int age;
 
-    public Person(String name) {
+    public Dog(String name, int age) {
         this.name = name;
+        this.age = age;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     public void setName(String name) {
@@ -182,7 +189,7 @@ public class Person {
 }
 ```
 
-The naming convention is `getFieldName()` and `setFieldName()`. Not every field needs a setter — if a field shouldn't change after construction, only provide a getter. This gives you control over what can be modified from outside the class.
+The naming convention is `getFieldName()` and `setFieldName()`. Not every field needs a setter — `age` has a getter but no setter because a dog's age shouldn't be changed directly. This gives you control over what can be modified from outside the class.
 
 ## Inheritance
 
