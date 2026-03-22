@@ -155,6 +155,70 @@ Key concepts:
 
 ## Exception Handling
 
+### Why Exceptions?
+
+Without exceptions, every method that could fail returns a special value (`null`, `-1`, `false`) and every caller has to check for it. Miss one check and you get a silent bug — your program keeps running with bad data and you don't know why.
+
+Exceptions force the issue. If something goes wrong, execution stops and jumps to the nearest `catch` block. With checked exceptions, the compiler won't even let you ignore them.
+
+```java
+// Without exceptions — caller must remember to check
+Product p = findProduct("SKU999");
+if (p == null) {
+    // Was it not found? Invalid SKU? Database error? No way to know.
+}
+
+// With exceptions — caller knows exactly what went wrong
+try {
+    Product p = findProduct("SKU999");
+} catch (ProductNotFoundException e) {
+    System.out.println(e.getMessage());  // "No product with SKU: SKU999"
+}
+```
+
+### What Happens When an Exception is Thrown?
+
+1. Execution stops at the `throw` line — nothing after it runs
+2. Java looks for the nearest `catch` block that matches the exception type
+3. If found, execution continues in the `catch` block, then after the try-catch
+4. If not found, the exception moves up the call stack until it's caught or the program crashes
+
+```java
+public void processOrder(Order order) throws InvalidOrderException {
+    validateOrder(order);        // if this throws, the next line never runs
+    reduceStock(order);          // only runs if validateOrder() succeeds
+}
+```
+
+### What Do You Do in the Catch Block?
+
+The catch block is where you respond to the error. Common patterns:
+
+- **Inform the user:** Display a meaningful error message
+- **Take corrective action:** Use a default value, skip the item, retry
+- **Re-throw:** If you can't handle it at this level, let the caller deal with it
+- **Never leave it empty** — an empty catch block hides bugs silently
+
+```java
+try {
+    service.processOrder(order);
+    System.out.println("Order processed successfully");
+} catch (InvalidOrderException e) {
+    System.out.println("Order failed: " + e.getMessage());
+    // The program continues — it doesn't crash
+}
+```
+
+### When to Throw Your Own Exceptions
+
+Throw an exception when your method encounters a condition it can't handle and the caller needs to know about:
+
+- Invalid input that violates a rule (empty name, negative quantity)
+- A requested resource doesn't exist (product not found, user not found)
+- A business rule is violated (insufficient stock, duplicate ID)
+
+Don't throw exceptions for normal control flow — use `if` statements for expected conditions.
+
 Java has **checked exceptions** that must be handled or declared. Python has no equivalent concept.
 
 ### Basic Try-Catch
