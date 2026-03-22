@@ -69,6 +69,30 @@ Key concepts:
 
 **When to use interfaces:** When unrelated classes need to share a capability. A `Duck` and an `Airplane` are nothing alike, but both can be `Flyable`.
 
+### Checking interfaces at runtime with `instanceof`
+
+Sometimes you have a collection of objects and need to check whether each one implements a particular interface. Java's `instanceof` keyword lets you do this:
+
+```java
+ArrayList<Animal> animals = new ArrayList<>();
+animals.add(new Duck("Daffy"));
+animals.add(new Dog("Rex"));
+
+for (Animal a : animals) {
+    if (a instanceof Flyable) {
+        Flyable f = (Flyable) a;
+        f.fly();
+    }
+}
+```
+
+**Python equivalent:** `isinstance(obj, SomeClass)` — same concept, different syntax.
+
+Key points:
+- `instanceof` returns `true` if the object implements the interface (or extends the class)
+- After checking, you can **cast** to the interface type to call its methods: `(Flyable) a`
+- This is useful when a collection holds a general type but some items have extra capabilities
+
 ## Abstract Classes
 
 An abstract class sits between a regular class and an interface. It can have both implemented methods and abstract methods (methods with no body that subclasses must implement).
